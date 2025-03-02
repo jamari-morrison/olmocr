@@ -520,6 +520,8 @@ async def sglang_server_task(args, semaphore):
         str(SGLANG_SERVER_PORT),
         "--log-level-http",
         "warning",
+        "--dp",
+        "8"
     ]
     cmd.extend(mem_fraction_arg)
 
