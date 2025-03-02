@@ -521,7 +521,7 @@ async def sglang_server_task(args, semaphore):
         "--log-level-http",
         "warning",
         "--dp",
-        "8"
+        args.dp
     ]
     cmd.extend(mem_fraction_arg)
 
@@ -919,6 +919,7 @@ async def main():
     parser.add_argument("--model_chat_template", type=str, default="qwen2-vl", help="Chat template to pass to sglang server")
     parser.add_argument("--target_longest_image_dim", type=int, help="Dimension on longest side to use for rendering the pdf pages", default=1024)
     parser.add_argument("--target_anchor_text_len", type=int, help="Maximum amount of anchor text to use (characters)", default=6000)
+    parser.add_argument("--dp", type=str, help="Number of decode prefill tokens to process in parallel", default="8")
 
     # Beaker/job running stuff
     parser.add_argument("--beaker", action="store_true", help="Submit this job to beaker instead of running locally")
